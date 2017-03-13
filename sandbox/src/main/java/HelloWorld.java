@@ -1,10 +1,10 @@
 public class HelloWorld {
 
     public static void main(String[] args){
-        Point p1 = new Point(-1, 3);
-        Point p2 = new Point(6, 2);
+        Point p1 = new Point(2, 2);
+        Point p2 = new Point(2, 6);
         System.out.println("Расстояние между точками с координатами A("
-                + p1.x + ", " + p2.x + ") и B(" + p2.x + ", " + p2.y + ") = " + distance(p1, p2));
+                + p1.x + ", " + p1.y + ") и B(" + p2.x + ", " + p2.y + ") = " + distance(p1, p2));
     }
 
     public static double distance(Point p1, Point p2){
