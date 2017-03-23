@@ -7,7 +7,7 @@ public class GroupDeletionTest extends TestBase{
     @Test
     public void testGroupDeletion(){
         app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().selectGroup();
+        app.getNavigationHelper().selectCheckbox();
         app.getGroupHelper().deleteSelectedGroups();
         app.getGroupHelper().returnToGroupPage();
     }
