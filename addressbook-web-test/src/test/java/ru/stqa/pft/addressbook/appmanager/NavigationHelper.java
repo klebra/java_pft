@@ -24,4 +24,8 @@ public class NavigationHelper extends HelperBase{
     public void acceptAlert(){
         wd.switchTo().alert().accept();
     }
+
+    public void clickOnUpdate() {
+        click(By.name("update"));
+    }
 }

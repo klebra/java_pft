@@ -39,7 +39,4 @@ public class ContactsHelper extends HelperBase{
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
 
-    public void clickOnUpdate() {
-        click(By.name("update"));
-    }
 }

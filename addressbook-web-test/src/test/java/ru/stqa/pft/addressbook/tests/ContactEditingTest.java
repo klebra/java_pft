@@ -10,7 +10,7 @@ public class ContactEditingTest extends TestBase{
         app.getNavigationHelper().goToHomePage();
         app.getContactsHelper().editContact();
         app.getContactsHelper().fillContactForm(new ContactData("emaN", "emaNtsaL", "sserddA", "123456789", "addr@mail.some"));
-        app.getContactsHelper().clickOnUpdate();
+        app.getNavigationHelper().clickOnUpdate();
         app.getContactsHelper().clickOnHomePage();
     }
 }
