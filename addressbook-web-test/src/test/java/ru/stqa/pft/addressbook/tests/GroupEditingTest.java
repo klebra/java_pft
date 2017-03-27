@@ -8,6 +8,9 @@ public class GroupEditingTest extends TestBase{
     @Test
     public void testGroupEditing(){
         app.getNavigationHelper().goToGroupPage();
+        if (!app.getGroupHelper().isGroupPresent()){
+            app.getGroupHelper().createGroup(new GroupData("Name of group", null , null));
+        }
         app.getNavigationHelper().selectCheckbox();
         app.getGroupHelper().editGroup();
         app.getGroupHelper().fillGroupForm(new GroupData("Group of name", "Footer", "Header"));

@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactsHelper extends HelperBase{
-    private WebDriver wd;
 
     public ContactsHelper(WebDriver wd) {
         super(wd);
@@ -40,4 +39,14 @@ public class ContactsHelper extends HelperBase{
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
 
+    public void createContact(ContactData data) {
+        clickOnAddContact();
+        fillContactForm(data);
+        submitContactCreation();
+        clickOnHomePage();
+    }
+
+    public boolean isContactPresent() {
+        return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
 }
