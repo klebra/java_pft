@@ -25,8 +25,8 @@ public class NavigationHelper extends HelperBase{
         click(By.linkText("home"));
     }
 
-    public void selectCheckbox() {
-        click(By.name("selected[]"));
+    public void selectCheckbox(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void acceptAlert(){

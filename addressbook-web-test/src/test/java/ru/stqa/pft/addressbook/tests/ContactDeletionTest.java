@@ -11,7 +11,7 @@ public class ContactDeletionTest extends TestBase{
         if (!app.getContactsHelper().isContactPresent()){
             app.getContactsHelper().createContact(new ContactData("Name", null, null, null, null));
         }
-        app.getNavigationHelper().selectCheckbox();
+        app.getNavigationHelper().selectCheckbox(0);
         app.getContactsHelper().deleteContact();
         app.getNavigationHelper().acceptAlert();
     }
