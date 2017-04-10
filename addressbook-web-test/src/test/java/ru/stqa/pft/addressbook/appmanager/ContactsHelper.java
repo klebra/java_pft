@@ -65,4 +65,38 @@ public class ContactsHelper extends HelperBase{
     public void selectContact(int index) {
         wd.findElements(By.name("entry")).get(index).findElement(By.cssSelector("td:nth-child(8)")).click();
     }
+
+    public void selectCheckbox(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void clickOnUpdate() {
+        click(By.name("update"));
+    }
+
+    public void modifyContact(ContactData contact, int index) {
+        selectContact(index);
+        fillContactForm(contact);
+        clickOnUpdate();
+        clickOnHomePage();
+    }
+
+    public void goToHomePage() {
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
+        click(By.linkText("home"));
+    }
+
+    public void acceptAlert(){
+        wd.switchTo().alert().accept();
+    }
+
+
+    public void deleteContact(int index) {
+        selectCheckbox(index);
+        deleteContact();
+        acceptAlert();
+        goToHomePage();
+    }
 }

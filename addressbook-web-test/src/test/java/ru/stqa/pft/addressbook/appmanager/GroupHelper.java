@@ -66,4 +66,26 @@ public class GroupHelper extends HelperBase{
          }
          return groups;
     }
+
+    public void selectCheckbox(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void clickOnUpdate() {
+        click(By.name("update"));
+    }
+
+    public void modifyGroup(int index, GroupData group) {
+        selectCheckbox(index);
+        editGroup();
+        fillGroupForm(group);
+        clickOnUpdate();
+        returnToGroupPage();
+    }
+
+    public void deleteGroup(int index) {
+        selectCheckbox(index);
+        deleteSelectedGroups();
+        returnToGroupPage();
+    }
 }
