@@ -11,19 +11,19 @@ import java.util.List;
 public class ContactEditingTest extends TestBase{
     @BeforeMethod
     public void ensurePreconditions(){
-        app.getContactsHelper().goToHomePage();
-        if (!app.getContactsHelper().isContactPresent()){
-            app.getContactsHelper().createContact(new ContactData("Name", null, null, null, null));
+        app.contact().homePage();
+        if (app.contact().list().size() == 0){
+            app.contact().create(new ContactData("Name", null, null, null, null));
         }
     }
 
     @Test
     public void testContactEditing(){
-        List<ContactData> before = app.getContactsHelper().getContactList();
+        List<ContactData> before = app.contact().list();
         ContactData contact = new ContactData("emaN", "emaNtsaL", "sserddA", "123456789", "addr@mail.some");
         int index = before.size() - 1;
-        app.getContactsHelper().modifyContact(contact, index);
-        List<ContactData> after = app.getContactsHelper().getContactList();
+        app.contact().modify(contact, index);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(index);

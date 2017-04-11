@@ -12,19 +12,19 @@ public class GroupEditingTest extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions(){
-        app.getNavigationHelper().goToGroupPage();
-        if (!app.getGroupHelper().isGroupPresent()){
-            app.getGroupHelper().createGroup(new GroupData("Name of group", null , null));
+        app.goTo().groupPage();
+        if (app.group().list().size() == 0){
+            app.group().create(new GroupData("Name of group", null , null));
         }
     }
 
     @Test
     public void testGroupEditing(){
-        List<GroupData> before = app.getGroupHelper().getGroupList();
+        List<GroupData> before = app.group().list();
         int index = before.size() - 1;
         GroupData group = new GroupData(before.get(index).getId(), "Group of name", "Footer", "Header");
-        app.getGroupHelper().modifyGroup(index, group);
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        app.group().modify(index, group);
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(index);
