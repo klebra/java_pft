@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactsHelper extends HelperBase{
 
@@ -57,20 +59,32 @@ public class ContactsHelper extends HelperBase{
          return contacts;
     }
 
-    public void selectContact(int index) {
-        wd.findElements(By.name("entry")).get(index).findElement(By.cssSelector("td:nth-child(8)")).click();
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+            contacts.add(new ContactData().withId(id).withName(name).withLastName(lastname));
+        }
+        return contacts;
     }
 
-    public void selectCheckbox(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("a[href*='edit.php?id=" + id + "']")).click();
+    }
+
+    public void selectCheckboxById(int id) {
+        wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
     }
 
     public void clickOnUpdate() {
         click(By.name("update"));
     }
 
-    public void modify(ContactData contact, int index) {
-        selectContact(index);
+    public void modify(ContactData contact) {
+        selectContactById(contact.getId());
         fillContactForm(contact);
         clickOnUpdate();
         clickOnHomePage();
@@ -88,8 +102,8 @@ public class ContactsHelper extends HelperBase{
     }
 
 
-    public void delete(int index) {
-        selectCheckbox(index);
+    public void delete(ContactData contact) {
+        selectCheckboxById(contact.getId());
         deleteCurrent();
         acceptAlert();
         homePage();
