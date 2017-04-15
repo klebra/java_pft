@@ -7,9 +7,10 @@ public class ContactData {
     private String adress;
     private String home;
     private String mobile;
-
     private String work;
     private String email;
+
+    private String allPhones;
 
     public int getId() {
         return id;
@@ -33,6 +34,10 @@ public class ContactData {
 
     public String getWork() {
         return work;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
     }
 
     public String getMobile() {
@@ -103,6 +108,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withAllPhones(String allphones) {
+        this.allPhones = allphones;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -110,4 +120,5 @@ public class ContactData {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
 }
