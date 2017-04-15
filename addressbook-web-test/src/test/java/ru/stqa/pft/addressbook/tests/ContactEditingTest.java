@@ -26,9 +26,11 @@ public class ContactEditingTest extends TestBase{
                 .withId(modifiedContact.getId())
                 .withName("emaN")
                 .withLastName("emaNtsaL")
-                .withAdress("sserddA")
+                .withAddress("sserddA")
                 .withMobile("123456789")
-                .withEmail("addr@mail.some");
+                .withEmail("addr@mail.some")
+                .withEmail2("some@string.here")
+                .withEmail3("111@222.333");
         app.contact().modify(contact);
         Contacts after = app.contact().all();
         assertThat(after.size(), equalTo(before.size()));
