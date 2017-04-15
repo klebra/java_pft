@@ -5,8 +5,10 @@ public class ContactData {
     private String name;
     private String lastName;
     private String adress;
+    private String home;
     private String mobile;
 
+    private String work;
     private String email;
 
     public int getId() {
@@ -23,6 +25,14 @@ public class ContactData {
 
     public String getAdress() {
         return adress;
+    }
+
+    public String getHome() {
+        return home;
+    }
+
+    public String getWork() {
+        return work;
     }
 
     public String getMobile() {
@@ -73,8 +83,18 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withHome(String home) {
+        this.home = home;
+        return this;
+    }
+
     public ContactData withMobile(String mobile) {
         this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withWork(String work) {
+        this.work = work;
         return this;
     }
 
