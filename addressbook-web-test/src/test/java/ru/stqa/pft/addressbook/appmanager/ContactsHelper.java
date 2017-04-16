@@ -131,4 +131,15 @@ public class ContactsHelper extends HelperBase{
                 .withEmail2(email2)
                 .withEmail3(email3);
     }
+
+    public ContactData infoFromDetailsForm(ContactData contact) {
+        clickOnDetailsOfContact(contact.getId());
+        String allinfo = wd.findElement(By.id("content")).getText();
+        return new ContactData()
+                .withAllInfo(allinfo);
+    }
+
+    private void clickOnDetailsOfContact(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href*='view.php?id=%s']", id))).click();
+    }
 }
