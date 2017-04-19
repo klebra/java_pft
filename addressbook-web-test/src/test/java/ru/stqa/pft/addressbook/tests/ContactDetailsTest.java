@@ -65,7 +65,6 @@ public class ContactDetailsTest extends TestBase {
     private String mergedEmails(ContactData contact) {
         return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
                 .stream().filter((s) -> ! s.equals(""))
-                .map(ContactEmailMainTest::cleaned)
                 .collect(Collectors.joining("\n"));
     }
 }
