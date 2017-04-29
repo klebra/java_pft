@@ -13,8 +13,8 @@ public class GroupEditingTest extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions(){
+        app.goTo().groupPage();
         if (app.db().groups().size() == 0){
-            app.goTo().groupPage();
             app.group().create(new GroupData().withName("Name of group"));
         }
     }
@@ -33,6 +33,7 @@ public class GroupEditingTest extends TestBase{
         Groups after = app.db().groups();
         assertEquals(after.size(), before.size());
         assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
+        verifyGroupListInUI();
     }
 
 }
