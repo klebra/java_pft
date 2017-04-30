@@ -156,8 +156,21 @@ public class ContactsHelper extends HelperBase{
         select.selectByValue(String.valueOf(id));
     }
 
+    private void selectGroupViewById(int id) {
+        Select select = new Select(wd.findElement(By.name("group")));
+        select.selectByValue(String.valueOf(id));
+    }
+
     private void addToGroup() {
         wd.findElement(By.name("add")).click();
-        wd.findElement(By.linkText("home")).click();
+        homePage();
+    }
+
+    public void deleteContactFromGroup(ContactData contact, GroupData group) {
+        homePage();
+        selectGroupViewById(group.getId());
+        selectCheckboxById(contact.getId());
+        wd.findElement(By.name("remove")).click();
+        homePage();
     }
 }
